@@ -1,0 +1,25 @@
+.info-container{
+    width: 100%;
+    margin: 20px 0 20px;
+  
+    background-color: rgb(255, 255, 255);
+    border-bottom: 5px solid rgb(14, 4, 161);
+    border-radius: 5px 5px 0 0;
+}
+
+.search-button {
+    width: 120px;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid white;
+    background-color: darkblue;
+  
+    display: block;
+    margin-left: auto;
+  
+    padding-top: 6px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+  }

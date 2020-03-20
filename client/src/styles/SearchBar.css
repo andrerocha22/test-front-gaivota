@@ -1,0 +1,28 @@
+.form-search-bar {
+  margin-top: 10px;
+  border-radius: 4px;
+}
+
+.form-search-bar:focus {
+  box-shadow: none !important;
+  outline: 0px !important;
+}
+
+.label-search-bar {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: large;
+  color: rgb(231, 231, 231)
+}
+
+.button-search-bar {
+  background-color: darkblue;
+  width: 100px;
+  color: white;
+  font-weight: 500;
+  border: 1px solid blue;
+}
+
+.button-search-bar:hover {
+  color: rgb(196, 196, 196);
+}

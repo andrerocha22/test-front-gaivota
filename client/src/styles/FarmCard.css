@@ -1,0 +1,22 @@
+.container-card{
+    align-items: flex-start;
+    border-radius: 4px;
+}
+
+.item{
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(1, 0, 58);
+}
+
+.container-bid-buy{
+    margin-top: 15px;
+}
+
+.button-card{
+    width: 100px;
+    background-color: darkblue;
+    color: white;
+    font-weight: 500;
+    border: 1px solid blue;
+  }

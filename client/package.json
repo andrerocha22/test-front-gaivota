@@ -1,0 +1,49 @@
+{
+  "name": "gaivota-full-stack-test",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "lint": "eslint ./src/ --fix"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "bootstrap": "^4.4.1",
+    "jquery": "^3.4.1",
+    "leaflet": "^1.6.0",
+    "lodash": "^4.17.15",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
+    "react-geocode": "^0.2.1",
+    "react-leaflet": "^2.6.3",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.2.0",
+    "recharts": "^1.8.5"
+  },
+  "devDependencies": {
+    "customize-cra": "^0.8.0",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-plugin-jquery": "^1.5.1",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react": "^7.12.4",
+    "eslint-plugin-react-hooks": "^1.6.0",
+    "prettier": "^1.19.1",
+    "react-app-rewired": "^2.1.5",
+    "react-hot-loader": "^4.12.15"
+  }
+}
