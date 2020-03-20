@@ -21,6 +21,8 @@ export default class FarmCard extends Component {
 
     const total = total_area * yield_estimation;
 
+    const logged = location.search.split("login=")[1];
+
     return (
       <div className="card container-card">
         <div className="card-body">
@@ -34,10 +36,16 @@ export default class FarmCard extends Component {
           <li className="item">Price: {price}</li>
 
           <div className="row justify-content-around container-bid-buy">
-            <a href={`checkout?farm=${farm_id}`} className="btn button-card">
+            <a
+              href={logged ? `checkout?farm=${farm_id}` : ""}
+              className="btn button-card"
+            >
               Buy Now
             </a>
-            <a href="checkout" className="btn button-card">
+            <a
+              href={logged ? `checkout?farm=${farm_id}` : ""}
+              className="btn button-card"
+            >
               Bid
             </a>
           </div>

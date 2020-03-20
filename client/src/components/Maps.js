@@ -7,6 +7,7 @@ import geojson from "../assets/farms_geo.json";
 export default class Maps extends Component {
   static propTypes = {
     farm: PropTypes.any,
+    userLogged: PropTypes.any,
     farm_id: PropTypes.number
   };
 
@@ -28,7 +29,12 @@ export default class Maps extends Component {
   }
 
   handleClick = () => {
-    window.location.href = `farms?farm=${this.props.farm.farm_id}`;
+    const userLogged = this.props.userLogged;
+    if (userLogged) {
+      window.location.href = `farms?login=${userLogged}&farm=${this.props.farm.farm_id}`;
+    } else {
+      alert("Login to see more infomation!");
+    }
   };
 
   render() {

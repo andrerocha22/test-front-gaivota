@@ -20,7 +20,7 @@ export default function FormCreditCard() {
           <div className="form-group col-md-3">
             <label>Month</label>
             <select id="inputState" className="form-control">
-              <option selected>Choose...</option>
+              <option defaultValue>Choose...</option>
               <option>Jan</option>
               <option>Feb</option>
               <option>Mar</option>
@@ -38,7 +38,7 @@ export default function FormCreditCard() {
           <div className="form-group col-md-3">
             <label>Year</label>
             <select id="inputState" className="form-control">
-              <option selected>Choose...</option>
+              <option defaultValue>Choose...</option>
               <option>2020</option>
               <option>2021</option>
               <option>2022</option>

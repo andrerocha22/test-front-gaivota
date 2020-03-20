@@ -4,6 +4,7 @@ import Header from "../../components/Header";
 import Maps from "../../components/Maps";
 import FarmCard from "../../components/FarmCard";
 import InfoFarm from "../../components/InfoFarm";
+import Selector from "../../components/Selector";
 import farmApi from "../../apis/farms";
 import "../../styles/Farms.css";
 
@@ -32,7 +33,7 @@ export default class Home extends Component {
 
   async componentDidMount() {
     const term = location.search.split("farm=")[1];
-
+    console.log(term);
     const response = await farmApi.get(`/farms/${term}`);
     const responsePrec = await farmApi.get("/farms_precipitation");
     const responseNdvi = await farmApi.get("/farms_ndvi");
@@ -70,6 +71,8 @@ export default class Home extends Component {
     let array_date_total = [];
 
     let func = choosedFarm;
+
+    if (this.state.dataNdvi === null) return;
 
     this.state.dataNdvi.filter(item => {
       let yyyymm = item.date.slice(0, 7);
@@ -110,6 +113,8 @@ export default class Home extends Component {
 
     let func = choosedFarm;
 
+    if (this.state.dataPrec === null) return;
+
     this.state.dataPrec.filter(item => {
       let yyyymm = item.date.slice(0, 7);
       if (!data_months.includes(yyyymm)) {
@@ -141,6 +146,7 @@ export default class Home extends Component {
     return array_date_total;
   }
 
+  //Conditions to show the chart (just one, together)
   showChartDataPrec = () => {
     if (this.state.precVisible && !this.state.ndviVisible) {
       this.setState({
@@ -165,6 +171,7 @@ export default class Home extends Component {
     }
   };
 
+  //Conditions to show the chart (just one, together)
   showChartDataNdvi = () => {
     if (this.state.ndviVisible && !this.state.precVisible) {
       this.setState({
@@ -189,6 +196,20 @@ export default class Home extends Component {
     }
   };
 
+  handleChartToShow(type) {
+    switch (type) {
+      case "Precipitation":
+        this.showChartDataPrec();
+        break;
+      case "Ndvi":
+        this.showChartDataNdvi();
+        break;
+
+      default:
+        break;
+    }
+  }
+
   render() {
     return (
       <div>
@@ -203,26 +224,7 @@ export default class Home extends Component {
               </div>
               <div className="col-md-6 offset-md-1">
                 <div className="row justify-content-start">
-                  <div className="form-check form-check-inline">
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      id="precipitation"
-                      value="precipitation"
-                      onClick={this.showChartDataPrec}
-                    />
-                    <label className="form-check-label">Precipitation</label>
-                  </div>
-                  <div className="form-check form-check-inline">
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      id="ndvi"
-                      value="ndvi"
-                      onClick={this.showChartDataNdvi}
-                    />
-                    <label className="form-check-label">NDVI</label>
-                  </div>
+                  <Selector callback={this.handleChartToShow.bind(this)} />
                 </div>
 
                 <div className="row justify-content-center">
@@ -253,11 +255,6 @@ export default class Home extends Component {
                 </div>
                 <div className="container">
                   <FarmCard farm={this.state.farm} />
-                </div>
-                <div className="row justify-content-end">
-                  <a href="/" className="back-button">
-                    SEARCH OTHER
-                  </a>
                 </div>
               </div>
             </div>

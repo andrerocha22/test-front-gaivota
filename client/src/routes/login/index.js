@@ -73,7 +73,7 @@ export default class index extends Component {
                 </div>
                 <div className="d-flex justify-content-center mt-4 login_container">
                   <a
-                    href="/"
+                    href="/app/home?login=true"
                     type="button"
                     name="button"
                     className="btn login_btn"

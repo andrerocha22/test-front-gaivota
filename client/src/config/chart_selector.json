@@ -5,14 +5,14 @@
     "options": [
         {
             "id": 0,
-            "name": "ndvi",
+            "name": "Ndvi",
             "chart_type": "line",
             "min_value": 0,
             "max_value": 1
         },
         {
             "id": 1,
-            "name": "precipitation",
+            "name": "Precipitation",
             "chart_type": "bar",
             "min_value": 0,
             "max_value": 25

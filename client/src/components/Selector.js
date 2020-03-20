@@ -1,30 +1,52 @@
+/* eslint-disable */
+
 import React, { Component } from "react";
 import $ from "jquery";
 
 import chartSelector from "../config/chart_selector.json";
 
 export default class Selector extends Component {
+  state = { name: null };
+
   componentDidMount() {
-    var jsonData = JSON.stringify(chartSelector.options);
-    $.each(JSON.parse(jsonData), function(idx, obj) {
-      $("#ddl_location")
-        .append('<option value="' + obj.id + '">' + obj.location + "</option>")
-        .selectpicker("refresh");
+    let dropdown = $("#farm-info-dropdown");
+
+    dropdown.empty();
+
+    dropdown.append('<option selected="true" disabled>Choose a data</option>');
+    dropdown.prop("selectedIndex", 0);
+
+    var data = chartSelector.options;
+
+    $.each(data, function(key, entry) {
+      dropdown.append(
+        $("<option></option>")
+          .attr("value", entry.id)
+          .text(entry.name)
+      );
     });
   }
+
+  handleChange = e => {
+    var str = e.target.options[e.target.selectedIndex].text;
+    this.props.callback(str);
+  };
 
   render() {
     return (
       <div>
         <form className="form-inline">
-          <label className="my-1 mr-2">{chartSelector.label}</label>
-          <select className="custom-select my-1 mr-sm-2" id={chartSelector.id}>
-            <option selected>Choose...</option>
-          </select>
-
-          <button type="submit" className="btn btn-primary my-1">
-            Submit
-          </button>
+          <label
+            className="my-1 mr-2"
+            style={{ color: "#FFF", fontWeight: "bold" }}
+          >
+            {chartSelector.label}
+          </label>
+          <select
+            id="farm-info-dropdown"
+            name="farm-info"
+            onChange={this.handleChange}
+          ></select>
         </form>
       </div>
     );

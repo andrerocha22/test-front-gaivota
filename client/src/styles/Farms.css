@@ -11,21 +11,3 @@
   color: white;
   font-weight: bold;
 }
-
-.back-button {
-  width: 130px;
-  height: 40px;
-  border-radius: 5px;
-  border: 1px solid white;
-  background-color: rgb(14, 14, 82);
-
-  display: block;
-  margin-left: auto;
-
-  margin-top: 15px;
-  padding-top: 7px;
-  text-align: center;
-  font-size: 14px;
-  font-weight: bold;
-  color: rgb(255, 255, 255);
-}

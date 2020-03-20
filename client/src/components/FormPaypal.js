@@ -7,13 +7,17 @@ export default function FormCreditCard() {
         <div className="form-row">
           <div className="form-group col-md">
             <label>Email</label>
-            <input type="email" className="form-control" id="inputEmail4" />
+            <input type="email" className="form-control" id="inputEmail" />
           </div>
         </div>
         <div className="form-row">
           <div className="form-group col-md">
             <label>Password</label>
-            <input type="password" className="form-control" id="inputEmail4" />
+            <input
+              type="password"
+              className="form-control"
+              id="inputPassword"
+            />
           </div>
         </div>
 
