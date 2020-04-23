@@ -9,15 +9,26 @@ export default class Offer extends Component {
     changeMethod: PropTypes.any
   };
 
-  state = { total: 0, price: 0, yield: 0, farm_name: "" };
+  state = {
+    total: 0,
+    price: 0,
+    yield: 0,
+    farm_name: "",
+    farm_price: 0,
+    farm_yield: 0
+  };
 
   async componentDidMount() {
     const farm = location.search.split("farm=")[1];
 
     const response = await farmApi.get(`/farms/${farm}`);
-
+    console.log(response);
     if (response.data !== null) {
-      this.setState({ farm_name: response.data.name });
+      this.setState({
+        farm_name: response.data.name,
+        farm_price: response.data.price,
+        farm_yield: response.data.yield_estimation
+      });
     }
   }
 
@@ -29,16 +40,22 @@ export default class Offer extends Component {
 
   onFormSubmit = event => {
     event.preventDefault();
-    if (this.state.farm !== undefined) {
-      if (this.state.price !== 0) {
+    if (this.state.farm_name !== "") {
+      if (this.state.price !== 0 && this.state.yield !== 0) {
         this.setState({
-          total: this.state.price * this.state.farm.yield_estimation,
+          total: this.state.price * this.state.yield,
           price: 0,
           yield: 0
         });
-      } else {
+      } else if (this.state.price !== 0) {
         this.setState({
-          total: this.state.farm.price * this.state.yield,
+          total: this.state.price * this.state.farm_yield,
+          price: 0,
+          yield: 0
+        });
+      } else if (this.state.yield !== 0) {
+        this.setState({
+          total: this.state.farm_price * this.state.yield,
           price: 0,
           yield: 0
         });
