@@ -22,7 +22,6 @@ export default class Offer extends Component {
     const farm = location.search.split("farm=")[1];
 
     const response = await farmApi.get(`/farms/${farm}`);
-    console.log(response);
     if (response.data !== null) {
       this.setState({
         farm_name: response.data.name,
