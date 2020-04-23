@@ -6,7 +6,7 @@ import FarmCard from "../../components/FarmCard";
 import InfoFarm from "../../components/InfoFarm";
 import Selector from "../../components/Selector";
 import farmApi from "../../apis/farms";
-import "../../styles/Farms.css";
+import "./styles.css";
 
 import {
   ComposedChart,
@@ -33,7 +33,7 @@ export default class Home extends Component {
 
   async componentDidMount() {
     const term = location.search.split("farm=")[1];
-    console.log(term);
+    // console.log(term);
     const response = await farmApi.get(`/farms/${term}`);
     const responsePrec = await farmApi.get("/farms_precipitation");
     const responseNdvi = await farmApi.get("/farms_ndvi");

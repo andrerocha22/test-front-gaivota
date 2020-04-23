@@ -8,7 +8,7 @@ import SearchBar from "../../components/SearchBar";
 import farmApi from "../../apis/farms";
 
 //Styles
-import "../../styles/Home.css";
+import "./styles.css";
 
 // import { logout } from "../../auth";
 

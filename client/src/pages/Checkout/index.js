@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import Header from "../../components/Header";
 import Payment from "../../components/Payment";
 import Offer from "../../components/Offer";
-import "../../styles/Checkout.css";
+import "./styles.css";
+
 import PropTypes from "prop-types";
 
 export default class index extends Component {

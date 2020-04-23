@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-import "../styles/FarmCard.css";
+import "./styles.css";
 
 export default class FarmCard extends Component {
   static propTypes = {

@@ -1,6 +1,6 @@
 import React from "react";
-import master from "../assets/Master-Card-icon.png";
-import visa from "../assets/Visa-icon.png";
+import master from "../../assets/Master-Card-icon.png";
+import visa from "../../assets/Visa-icon.png";
 
 export default function FormCreditCard() {
   return (

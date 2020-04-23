@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../../styles/Login.css";
+import "./styles.css";
 import logo from "../../assets/logo192.png";
 // import { withRouter } from "react-router-dom";
 // import { authenticate } from "../../auth";

@@ -3,7 +3,7 @@
 import React, { Component } from "react";
 import $ from "jquery";
 
-import chartSelector from "../config/chart_selector.json";
+import chartSelector from "../../config/chart_selector.json";
 
 export default class Selector extends Component {
   state = { name: null };

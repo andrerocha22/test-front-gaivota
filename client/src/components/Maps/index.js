@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Map, TileLayer, Marker, Popup, GeoJSON } from "react-leaflet";
 import PropTypes from "prop-types";
 
-import geojson from "../assets/farms_geo.json";
+import geojson from "../../assets/farms_geo.json";
 
 export default class Maps extends Component {
   static propTypes = {

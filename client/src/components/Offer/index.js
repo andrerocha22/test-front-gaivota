@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import "../styles/Offer.css";
+import "./styles.css";
+
 import PropTypes from "prop-types";
 
-import farmApi from "../apis/farms";
+import farmApi from "../../apis/farms";
 
 export default class Offer extends Component {
   static propTypes = {

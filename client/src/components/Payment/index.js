@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import "../styles/Payment.css";
-import paypalLogo from "../assets/paypal-icon.png";
-import FormCreditCard from "./FormCreditCard";
-import FormPaypal from "./FormPaypal";
+import "./styles.css";
+
+import paypalLogo from "../../assets/paypal-icon.png";
+import FormCreditCard from "../FormCreditCard";
+import FormPaypal from "../FormPaypal";
 import PropTypes from "prop-types";
 
 export default class Payment extends Component {

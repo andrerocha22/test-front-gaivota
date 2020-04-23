@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-import "../styles/InfoFarm.css";
+import "./styles.css";
 
 export default class InfoFarm extends Component {
   static propTypes = {
