@@ -1,12 +1,15 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import AddNewFarmForm from "../../components/AddNewFarmForm";
 import farmApi from "../../apis/farms";
 import Header from "../../components/Header";
+import { loadFarmData } from "../../actions/index";
 import "./styles.css";
 import { useHistory } from "react-router-dom";
 
 export default function RegisterFarm() {
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const handleSubmit = async values => {
     event.preventDefault();
@@ -39,11 +42,12 @@ export default function RegisterFarm() {
     });
 
     await farmApi
-      .post("/farms", json, {
+      .post("/farms/create", json, {
         headers: { "Content-Type": "application/json" }
       })
       .then(response => {
         console.log(response);
+        dispatch(loadFarmData());
         modalContent.style.background = "#393";
         message.innerHTML = "Farm created with sucess";
         setTimeout(() => {

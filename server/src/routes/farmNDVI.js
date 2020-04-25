@@ -1,12 +1,15 @@
 const express = require("express");
 const router = express.Router();
-var FarmNDVI = require("../models/FarmsNDVI");
+const fs = require("fs");
+const path = require("path");
 
-router.get("/", function(req, res, next) {
-  FarmNDVI.getFarmNDVI({}, function(err, data) {
-    if (err) throw err;
-    return res.json(data);
-  });
+const ndviData = fs.readFileSync(
+  path.join(__dirname, "../../data/farms_ndvi.json"),
+  "utf8"
+);
+
+router.get("/", async (req, res) => {
+  res.status(200).send(ndviData);
 });
 
 module.exports = router;

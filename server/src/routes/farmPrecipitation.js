@@ -1,12 +1,18 @@
 const express = require("express");
 const router = express.Router();
-var FarmsPrecipitation = require("../models/FarmsPrecipitation");
+const csvjson = require('csvjson');
+const fs = require('fs');
+const path = require('path');
 
-router.get("/", function(req, res, next) {
-    FarmsPrecipitation.getFarmsPrecipitation({}, function(err, data) {
-    if (err) throw err;
-    return res.json(data);
-  });
+const precipitationData = fs.readFileSync(
+  path.join(__dirname, '../../data/farms_precipitation.csv'),
+  {
+      encoding: 'utf8'
+  }
+);
+
+router.get('/', async (req, res) => {
+  res.status(200).send(csvjson.toObject(precipitationData));
 });
 
 module.exports = router;

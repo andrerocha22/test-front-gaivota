@@ -35,8 +35,7 @@
 ### 4. Database
 
 ```
- $ MongoDB
- $ Docker Running Port:5000
- $ npm run dev || yarn dev
+ $ docker pull mongo
+ $ docker run -d -p 5000:27017 --name mongodb mongo
 ```
 

@@ -50,7 +50,7 @@ class Register extends Component {
             </div>
             <div className="d-flex justify-content-center form_container">
               <form className="auth-form" noValidate onSubmit={this.onSubmit}>
-                <label>Name</label>
+                <label className="label-register">Name</label>
                 <div className="input-group mb-3">
                   <input
                     onChange={this.onChange}
@@ -60,7 +60,7 @@ class Register extends Component {
                     className="auth-input"
                   />
                 </div>
-                <label>Email</label>
+                <label className="label-register">Email</label>
                 <div className="input-group mb-3">
                   <input
                     onChange={this.onChange}
@@ -70,7 +70,7 @@ class Register extends Component {
                     className="auth-input"
                   />
                 </div>
-                <label>Password</label>
+                <label className="label-register">Password</label>
                 <div className="input-group mb-2">
                   <input
                     onChange={this.onChange}

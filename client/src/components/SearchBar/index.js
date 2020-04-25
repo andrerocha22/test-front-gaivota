@@ -14,6 +14,7 @@ export default function SearchBar() {
 
   const onFormSubmit = event => {
     event.preventDefault();
+    console.log(farms);
     farms.forEach(farm => {
       if (farm.farm_id === Number(term)) {
         dispatch(setSelectFarmData(farm));
