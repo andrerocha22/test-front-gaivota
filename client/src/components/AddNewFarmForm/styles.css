@@ -1,0 +1,20 @@
+.button-create {
+    background-color: rgb(18, 15, 218);
+    width: 100px;
+    color: white;
+    font-weight: 500;
+    border: 1px solid rgb(18, 15, 218);
+    border-radius: 8px;
+    margin-top: 15px;
+    padding: 5px;
+    font-size: 18px;
+  }
+  
+  .button-create:hover {
+    background-color: rgb(11, 9, 161);
+    color: white;
+  }
+
+  .searchForm-container label{
+    margin-top: 10px;
+  }

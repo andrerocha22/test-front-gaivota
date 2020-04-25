@@ -1,0 +1,22 @@
+.farm-body {
+  padding: 120px 10% 100px;
+}
+
+.container-chart {
+  display: block;
+  margin-bottom: 100px;
+}
+
+.form-check-label {
+  color: white;
+  font-weight: bold;
+}
+
+.col-maps {
+  margin: 0;
+  padding: 0;
+}
+
+.row-chart{
+  overflow: hidden;
+}

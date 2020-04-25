@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import "./styles.css";
 
 import paypalLogo from "../../assets/paypal-icon.png";
@@ -6,12 +6,8 @@ import FormCreditCard from "../FormCreditCard";
 import FormPaypal from "../FormPaypal";
 import PropTypes from "prop-types";
 
-export default class Payment extends Component {
-  static propTypes = {
-    choosedCredit: PropTypes.bool
-  };
-
-  renderPayment(choosedCredit) {
+export default function Payment(props) {
+  const renderPayment = choosedCredit => {
     if (choosedCredit) {
       return (
         <div className="card">
@@ -31,13 +27,15 @@ export default class Payment extends Component {
         </div>
       );
     }
-  }
+  };
 
-  render() {
-    return (
-      <div className="container-payment">
-        {this.renderPayment(this.props.choosedCredit)}
-      </div>
-    );
-  }
+  return (
+    <div className="container-payment">
+      {renderPayment(props.choosedCredit)}
+    </div>
+  );
 }
+
+Payment.propTypes = {
+  choosedCredit: PropTypes.bool
+};

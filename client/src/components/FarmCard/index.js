@@ -1,56 +1,62 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 import "./styles.css";
+import { Link } from "react-router-dom";
 
-export default class FarmCard extends Component {
-  static propTypes = {
-    farm: PropTypes.any
-  };
+export default function FarmCard() {
+  const [hasData, setHasData] = useState(false);
 
-  render() {
-    const {
-      farm_id,
-      name,
-      culture,
-      variety,
-      total_area,
-      yield_estimation,
-      price
-    } = this.props.farm;
+  const selectedFarm = useSelector(state => state.data.selectedFarm);
 
-    const total = total_area * yield_estimation;
+  let total = 0;
 
-    const logged = location.search.split("login=")[1];
+  const logged = location.search.split("login=")[1];
 
-    return (
-      <div className="card container-card">
-        <div className="card-body">
-          <h1 className="card-title">{name}</h1>
+  useEffect(() => {
+    if (selectedFarm !== null) {
+      setHasData(true);
+      total = selectedFarm.total_area * selectedFarm.yield_estimation;
+    }
+  }, [selectedFarm]);
 
-          <li className="item">Culture: {culture}</li>
-          <li className="item">Variety: {variety}</li>
-          <li className="item">Area: {total_area}</li>
-          <li className="item">Yield Estimation: {yield_estimation}</li>
-          <li className="item">Total: {total}</li>
-          <li className="item">Price: {price}</li>
-
-          <div className="row justify-content-around container-bid-buy">
-            <a
-              href={logged ? `checkout?farm=${farm_id}` : ""}
-              className="btn button-card"
-            >
-              Buy Now
-            </a>
-            <a
-              href={logged ? `checkout?farm=${farm_id}` : ""}
-              className="btn button-card"
-            >
-              Bid
-            </a>
-          </div>
-        </div>
+  const cardFarmInfo = () => (
+    <div className="card-body" disabled={hasData ? true : false}>
+      <h2 className="card-title">{selectedFarm.name}</h2>
+      <li className="item">Culture: {selectedFarm.culture}</li>
+      <li className="item">Variety: {selectedFarm.variety}</li>
+      <li className="item">Area: {selectedFarm.total_area}</li>
+      <li className="item">
+        Yield Estimation: {selectedFarm.yield_estimation}
+      </li>
+      <li className="item">Total: {total}</li>
+      <li className="item">Price: {selectedFarm.price}</li>
+      <div className="row justify-content-around container-bid-buy">
+        <Link
+          to={logged ? `/app/checkout?farm=${selectedFarm.farm_id}` : ""}
+          className="btn button-card"
+        >
+          Buy Now
+        </Link>
+        <Link
+          to={logged ? `/app/checkout?farm=${selectedFarm.farm_id}` : ""}
+          className="btn button-card"
+        >
+          Bid
+        </Link>
       </div>
-    );
-  }
+    </div>
+  );
+
+  const createWarningCard = () => (
+    <div className="card-body" disabled={hasData ? false : true}>
+      <h1 className="card-title">Search a Farm to see more</h1>
+    </div>
+  );
+
+  return (
+    <div className="card container-card">
+      {hasData ? cardFarmInfo() : createWarningCard()}
+    </div>
+  );
 }

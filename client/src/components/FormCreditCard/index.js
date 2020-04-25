@@ -17,7 +17,10 @@ export default function FormCreditCard() {
               style={{ width: "40px", marginLeft: "5px" }}
             />
           </div>
-          <div className="form-group col-md-3">
+        </div>
+
+        <div className="form-row">
+          <div className="form-group col-md-4">
             <label>Month</label>
             <select id="inputState" className="form-control">
               <option defaultValue>Choose...</option>
@@ -35,7 +38,7 @@ export default function FormCreditCard() {
               <option>Dec</option>
             </select>
           </div>
-          <div className="form-group col-md-3">
+          <div className="form-group col-md-4">
             <label>Year</label>
             <select id="inputState" className="form-control">
               <option defaultValue>Choose...</option>

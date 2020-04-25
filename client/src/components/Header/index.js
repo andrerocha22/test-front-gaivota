@@ -13,7 +13,7 @@ export default function Header() {
         <div className="col-4">
           <h1
             onClick={() => {
-              window.location.href = "/";
+              window.location.href = "/app/home";
             }}
             className="text-header"
           >

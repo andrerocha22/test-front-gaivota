@@ -16,9 +16,13 @@ module.exports = {
   },
 
   async store(req, res) {
-    const farm = await Farm.create(req.body);
-
-    return res.json(farm);
+    const farm = await Farm.create(req.body, function(error) {
+      if (error) {
+        return res.status(400).send({ error: error._message });
+      } else {
+        return res.status(200).send('Success');
+      }
+    });
   },
 
   async update(req, res) {
@@ -35,5 +39,5 @@ module.exports = {
     await Farm.findOneAndRemove({ farm_id: req.params.farm_id });
 
     return res.send();
-  }
+  },
 };

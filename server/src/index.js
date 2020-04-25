@@ -3,14 +3,17 @@ const body_parser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const requireDir = require("require-dir");
-
-// const { PORT, JWT_PW } = process.env;
-// const mongo = require("../config/mongo");
+const logger = require("morgan");
+const cookieParser = require("cookie-parser");
+const bodyParser = require("body-parser");
+const session = require("express-session");
+const passport = require("passport");
+const expressValidator = require("express-validator");
+const flash = require("connect-flash");
 
 const PORT = 3001;
 const app = express();
 
-// mongo.connectToServer();
 
 app.use(cors());
 app.use(body_parser.json());
