@@ -1,0 +1,12 @@
+  {
+    "farm_id": 231,
+    "name": "Farm Y",
+    "latitude": -20.41673,
+    "longitude": -48.75594,
+    "culture": "soybean",
+    "variety": "XXX2",
+    "total_area": 900,
+    "yield_estimation": 85,
+    "price": 81
+  }
+  

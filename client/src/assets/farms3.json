@@ -1,0 +1,12 @@
+  {
+    "farm_id": 271,
+    "name": "Farm Z",
+    "latitude": -22.946619,
+    "longitude": -45.580756,
+    "culture": "rice",
+    "variety": "XXX1",
+    "total_area": 850,
+    "yield_estimation": 58,
+    "price": 80.5
+  }
+    
