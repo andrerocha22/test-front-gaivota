@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setSelectFarmData } from "../../actions/index";
+import { setSelectFarmData, loadFarmData } from "../../actions/index";
 import PropTypes from "prop-types";
 import "./styles.css";
 import { Link } from "react-router-dom";
@@ -11,6 +11,10 @@ export default function SearchBar() {
   const dispatch = useDispatch();
 
   const farms = useSelector(state => state.data.farms);
+
+  useEffect(() => {
+    dispatch(loadFarmData());
+  }, []);
 
   const onFormSubmit = event => {
     event.preventDefault();
