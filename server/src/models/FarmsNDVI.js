@@ -19,4 +19,8 @@ const FarmNDVISchema = new mongoose.Schema({
   }
 });
 
-mongoose.model("FarmNDVI", FarmNDVISchema);
+const FarmNDVI = (module.exports = mongoose.model("FarmNDVI", FarmNDVISchema));
+
+module.exports.getFarmNDVI = function({}, callback) {
+  FarmNDVI.find({}, callback);
+};

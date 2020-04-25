@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const FarmSchema = new mongoose.Schema({
+const FarmSchema = mongoose.Schema({
   farm_id: {
     type: Number,
     required: true
@@ -39,5 +39,12 @@ const FarmSchema = new mongoose.Schema({
   }
 });
 
+const Farm = (module.exports = mongoose.model("Farm", FarmSchema));
 
-mongoose.model('Farm', FarmSchema);
+module.exports.getFarmList = function({}, callback) {
+  Farm.find({}, callback);
+};
+
+module.exports.createFarm = function(newFarm, callback) {
+  newFarm.save(callback);
+};

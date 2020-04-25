@@ -18,5 +18,15 @@
 }
 
 .row-chart{
+  display: flex;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+
+.recharts-wrapper{
+  display: flex;
+  width: 100%;
   overflow: hidden;
 }

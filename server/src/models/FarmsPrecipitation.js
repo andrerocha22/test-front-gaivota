@@ -19,4 +19,8 @@ const FarmPrecSchema = new mongoose.Schema({
   }
 });
 
-mongoose.model("FarmPrecipitation", FarmPrecSchema);
+const FarmPrecipitation = (module.exports = mongoose.model("FarmPrecipitation", FarmPrecSchema));
+
+module.exports.getFarmsPrecipitation = function({}, callback) {
+  FarmPrecipitation.find({}, callback);
+};

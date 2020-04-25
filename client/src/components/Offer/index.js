@@ -22,13 +22,11 @@ export default function Offer(props) {
     if (selectedFarm !== null) {
       if (priceByYield !== 0 && farmYield !== 0) {
         setTotal(priceByYield * farmYield);
-      } else if (this.state.price !== 0) {
+      } else if (priceByYield !== 0) {
         setTotal(priceByYield * selectedFarm.yield);
-      } else if (this.state.yield !== 0) {
+      } else if (farmYield !== 0) {
         setTotal(selectedFarm.price * farmYield);
       }
-      setPriceByYield(0);
-      setFarmYield(0);
     }
   };
 

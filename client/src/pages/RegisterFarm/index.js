@@ -1,5 +1,5 @@
 import React from "react";
-import AddNewFarmForm from "../../components/AddNewFarmForm/AddNewFarmForm";
+import AddNewFarmForm from "../../components/AddNewFarmForm";
 import farmApi from "../../apis/farms";
 import Header from "../../components/Header";
 import "./styles.css";

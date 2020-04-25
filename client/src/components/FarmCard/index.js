@@ -11,7 +11,7 @@ export default function FarmCard() {
 
   let total = 0;
 
-  const logged = location.search.split("login=")[1];
+  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
 
   useEffect(() => {
     if (selectedFarm !== null) {
@@ -33,13 +33,17 @@ export default function FarmCard() {
       <li className="item">Price: {selectedFarm.price}</li>
       <div className="row justify-content-around container-bid-buy">
         <Link
-          to={logged ? `/app/checkout?farm=${selectedFarm.farm_id}` : ""}
+          to={
+            isAuthenticated ? `/app/checkout?farm=${selectedFarm.farm_id}` : ""
+          }
           className="btn button-card"
         >
           Buy Now
         </Link>
         <Link
-          to={logged ? `/app/checkout?farm=${selectedFarm.farm_id}` : ""}
+          to={
+            isAuthenticated ? `/app/checkout?farm=${selectedFarm.farm_id}` : ""
+          }
           className="btn button-card"
         >
           Bid

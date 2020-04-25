@@ -1,20 +1,26 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import Home from "./pages/Home";
 import FarmMoreInfo from "./pages/FarmMoreInfo";
-import Login from "./pages/Login";
 import Checkout from "./pages/Checkout";
 import RegisterFarm from "./pages/RegisterFarm";
+import RegisterUser from "./auth/RegisterUser";
+import Login from "./auth/Login";
+import PrivateRoute from "./components/PrivateRoute";
 
 export default function Routes() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/app/home" component={Home} />
-        <Route path="/app/farm" component={FarmMoreInfo} />
-        <Route path="/app/checkout" component={Checkout} />
-        <Route path="/app/login" component={Login} />
-        <Route path="/app/register" component={RegisterFarm} />
+        <Redirect exact from="/" to="/login" />
+        <Redirect exact from="/app" to="/login" />
+        <PrivateRoute exact path="/app/home" component={Home} />
+        <PrivateRoute exact path="/app/farm" component={FarmMoreInfo} />
+        <PrivateRoute exact path="/app/checkout" component={Checkout} />
+        <PrivateRoute exact path="/app/register" component={RegisterFarm} />
+
+        <Route exact path="/login/register" component={RegisterUser} />
+        <Route path="/login" component={Login} />
       </Switch>
     </BrowserRouter>
   );

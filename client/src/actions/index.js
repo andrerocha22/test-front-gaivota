@@ -1,4 +1,7 @@
 import farmApi from "../apis/farms";
+import jwt_decode from "jwt-decode";
+import setAuthToken from "../setAuthToken";
+
 import {
   SET_FARM_DATA,
   LOAD_FARM_DATA_ERROR,
@@ -9,8 +12,43 @@ import {
   SET_PRECIPITATION_DATA,
   NDVI_DATA_LOADING,
   LOAD_NDVI_DATA_ERROR,
-  SET_NDVI_DATA
+  SET_NDVI_DATA,
+  GET_ERRORS,
+  SET_CURRENT_USER,
+  USER_LOADING
 } from "../actions/types";
+
+// Register User
+export const registerUser = (userData, history) => dispatch => {
+  farmApi
+    .post("/users/register", userData)
+    .then(() => history.push("/login"))
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
+// Login - get user token
+export const loginUser = userData => dispatch => {
+  farmApi.post("/users/login", userData).then(res => {
+    const { token } = res.data;
+    localStorage.setItem("jwtToken", token);
+
+    setAuthToken(token);
+
+    const decoded = jwt_decode(token);
+
+    dispatch(setCurrentUser(decoded));
+  });
+  // .catch(err =>
+  //   dispatch({
+  //     type: GET_ERRORS,
+  //     payload: err.response.data
+  //   })
+  // );
+};
 
 export const loadFarmData = () => {
   return dispatch => {
@@ -32,7 +70,7 @@ export const loadPreciptationData = farmID => {
     dispatch(loadingPrecipitationData());
 
     farmApi
-      .get("/farms_precipitation")
+      .get("/farms/precipitation")
       .then(response => {
         const parsedJson = parseJson(response.data, farmID, false);
         dispatch(setPrecipitationData(parsedJson));
@@ -48,7 +86,7 @@ export const loadNdviData = farmID => {
     dispatch(loadingNdviData());
 
     farmApi
-      .get("/farms_ndvi")
+      .get("/farms/ndvi")
       .then(response => {
         const parsedJson = parseJson(response.data, farmID, true);
         dispatch(setNdviData(parsedJson));
@@ -57,6 +95,29 @@ export const loadNdviData = farmID => {
         dispatch(loadNdviDataError(error));
       });
   };
+};
+
+// Set logged in user
+export const setCurrentUser = decoded => {
+  return {
+    type: SET_CURRENT_USER,
+    payload: decoded
+  };
+};
+// User loading
+export const setUserLoading = () => {
+  return {
+    type: USER_LOADING
+  };
+};
+// Log user out
+export const logoutUser = () => dispatch => {
+  // Remove token from local storage
+  localStorage.removeItem("jwtToken");
+  // Remove auth header for future requests
+  setAuthToken(false);
+  // Set current user to empty object {} which will set isAuthenticated to false
+  dispatch(setCurrentUser({}));
 };
 
 export const loadingFarmData = () => {
